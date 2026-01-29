@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: hello-container
-        image: ghcr.io/eyalvoulichman-source/hello-k8s:v1 # Use your image name!
+        image: ghcr.io/eyalvoulichman-source/hello-k8s:v9 # Use your image name!
         ports:
         - containerPort: 80
 ---
