@@ -14,8 +14,8 @@ spec:
     spec:
       containers:
       - name: hello-container
-        image: ghcr.io/eyalvoulichman-source/hello-k8s:v1 # Use your image name!
-	imagePullPolicy: Always
+        image: ghcr.io/eyalvoulichman-source/hello-k8s:latest
+        imagePullPolicy: Always
         ports:
         - containerPort: 80
 ---
