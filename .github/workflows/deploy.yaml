@@ -26,4 +26,4 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           push: true
-          tags: ghcr.io/${{ github.repository }}:latest # We use :latest for auto-updates
+          tags: ghcr.io/eyalvoulichman-source/hello-k8s:v2
