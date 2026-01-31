@@ -24,7 +24,7 @@ spec:
             cpu: "500m"    # 1/2 of a CPU core
         imagePullPolicy: Always
         ports:
-        - containerPort: 80
+        - containerPort: 81
         livenessProbe:
           httpGet:
             path: /
