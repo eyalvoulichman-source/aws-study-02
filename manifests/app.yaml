@@ -49,4 +49,25 @@ spec:
   ports:
     - port: 80
       targetPort: 80
+
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: hello-ingress
+  namespace: devops
+  annotations:
+    kubernetes.io/ingress.class: nginx
+spec:
+  rules:
+  - host: hello.local
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: my-service
+            port:
+              number: 80
     
