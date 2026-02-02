@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: my-app
-   namespace: devops
+  namespace: devops
 spec:
   replicas: 2
   selector:
@@ -16,32 +16,14 @@ spec:
       containers:
       - name: hello-container
         image: ghcr.io/eyalvoulichman-source/hello-k8s:v2
-        resources:
-          requests:
-            memory: "64Mi"
-            cpu: "250m"    # 1/4 of a CPU core
-          limits:
-            memory: "128Mi"
-            cpu: "500m"    # 1/2 of a CPU core
-        imagePullPolicy: Always
         ports:
-        livenessProbe:
-          httpGet:
-            path: /
-            port: 80
-          initialDelaySeconds: 5
-          periodSeconds: 10
-        readinessProbe:
-          httpGet:
-            path: /
-            port: 80
-          initialDelaySeconds: 2
-          periodSeconds: 5
+        - containerPort: 80
 ---
 apiVersion: v1
 kind: Service
 metadata:
   name: my-service
+  namespace: devops
 spec:
   type: ClusterIP
   selector:
@@ -49,7 +31,6 @@ spec:
   ports:
     - port: 80
       targetPort: 80
-
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
@@ -70,4 +51,3 @@ spec:
             name: my-service
             port:
               number: 80
-    
